@@ -1,0 +1,565 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+  --hue: 162;
+  --first-color: hsl(200, 100%, 44%);
+  --first-color-alt: hsl(200, 79%, 38%);
+  --title-color: hsl(228, 8%, 95%);
+  --text-color: hsl(228, 8%, 65%);
+  --body-color: hsl(259, 31%, 90%);
+  --container-color: hsl(229, 75%, 27%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Poppins", sans-serif;
+  --biggest-font-size: 2rem;
+  --bigger-font-size: 1.25rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+
+  /*========== Font weight ==========*/
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1152px) {
+  :root {
+    --biggest-font-size: 4rem;
+    --bigger-font-size: 2rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+input,
+textarea,
+button,
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+
+body {
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+input,
+textarea,
+button {
+  outline: none;
+  border: none;
+}
+
+h1, h2, h3, h4 {
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.section {
+  padding-block: 5rem 2rem;
+}
+
+.section__title, 
+.section__subtitle {
+  text-align: center;
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+}
+
+.section__title {
+  font-size: var(--h1-font-size);
+  margin-bottom: 1.5rem;
+}
+
+.section__subtitle {
+  font-size: var(--small-font-size);
+  margin-bottom: .25rem;
+}
+
+.section__subtitle span {
+  color: var(--first-color);
+}
+
+.main {
+  overflow: hidden; /* Animação ScrollReveal JURÍDICO PRO*/
+}
+
+/*=============== HEADER & NAV ===============*/
+.header{
+  position: fixed;
+  width: 100%;
+  background-color: var(--container-color);
+  top: 0;
+  left: 0;
+  z-index: var(--z--fixed);
+}
+
+.nav{
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__logo{
+  color: var(--title-color);
+  font-weight: var(--first-color);
+  width: 170px;
+  height: 170px;
+  margin-top: -8px;
+}
+
+.nav__logo span{
+  color: var(--first-color);
+}
+
+.nav__toggle,
+.nav__close{
+  display: flex;
+  font-size: 1.25rem;
+  color: var(--title-color);
+  cursor: pointer;
+}
+
+.login-button{
+  font-size: 25px;
+}
+
+/* Navegação para celulares */
+@media screen and (max-width: 1023px){
+  .nav__menu{
+    position: fixed;
+    top: 0;
+    right: -100%;
+    background-color: hsla(0, 0%, 10%, .3);
+    width: 75%;
+    height: 100%;
+    padding: 4.5rem 0 0 3rem;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px); /*para navegador Safari*/
+    transition: right .4s;
+  }
+}
+
+.nav__list{
+  display: flex;
+  flex-direction: column;
+  row-gap: 3rem;
+}
+
+.nav__link{
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+  transition: color .4s;
+}
+
+.nav__link:hover{
+  color: var(--first-color);
+}
+
+.nav__close{
+position: absolute;
+top: 1rem;
+right: 1.5rem;
+}
+
+/* Abrir menu */
+.show-menu{
+  right: 0;
+}
+
+
+
+/*=============== BUTTON ===============*/
+
+.button{
+  display: inline-block;
+  background-color: var(--first-color);
+  padding: 1rem 1.75rem;
+  border-radius: .5rem;
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+  transition: box-shadow .4s;
+}
+
+.button:hover{
+  box-shadow: 0 8px 24px hsla(var(--hue), 100%, 40%, .25);
+}
+
+/*=============== ADICIONAR PROCESSOS/CLIENTES===============*/
+
+
+.text__input{
+  text-align:center;
+  font-style: italic;
+  display: grid;
+  grid-template-columns:repeat(1, 480px);
+  row-gap: 1rem;  
+  color: black;
+}
+
+.input__box{
+  background-color: rgb(190, 191, 203);
+}
+
+.save__Button{
+  background-color: var(--container-color);
+  color: white;
+  font-size: larger;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: center;
+}
+
+
+/*=============== BREAKPOINTS ===============*/
+/* Para telas menores */
+@media screen and(max-width: 320px){
+  .container{
+    margin-inline: 1rem;
+  }
+
+  .skills__content{
+    grid-template-columns: max-content;
+    row-gap: 1rem;
+  }
+
+  .servies__card{
+    padding-block: 1.5rem;
+  }
+}
+
+/* Para telas medias */
+@media screen and (min-widht: 576px){
+  .home__container,
+  .home__social{
+    grid-template-columns: 360px;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 765px){
+  .nav__menu{
+    width: 55%;
+  }
+
+}
+
+/* para telas grandes */
+@media screen and (min-width: 1023px){
+  .section{
+    padding-block: 7rem 2rem;
+  }
+  .section__subtitle{
+    font-size: var(--normal-font-size);
+  }
+
+  .nav{
+    height: calc(var(--header-height) + 1.5rem);
+  }
+  .nav__close,
+  .nav__toggle{
+    display: none;
+  }
+  .nav__list{
+    flex-direction: row;
+    column-gap: 3rem;
+  }
+  .nav__menu{
+    width: initial;
+  }
+
+}
+
+/* Para telas menores */
+@media screen and (max-width: 320px) {
+  .home__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;/* Espaçamento entre os itens */
+  }
+
+  .home__item {
+    width: 100%;/* Garante que cada item ocupe 100% da largura do contêiner */
+    display: flex;
+    justify-content: center;/* Centraliza o botão horizontalmente */
+  }
+
+  .button {
+    display: inline-block;
+    padding: .5rem 1.5rem;
+    border-radius: 1rem;
+    color: var(--title-color);
+    font-weight: var(--small-font-size);
+    transition: box-shadow .4s;
+    text-align: center;
+  }
+
+}
+
+/* Para telas medias */
+@media screen and (min-width: 576px) {
+  .home__menu {
+    gap: 1rem;
+  }
+
+  .home__item {
+    margin: 1rem 0;
+    font-size: var(--bigger-font-size);
+  }
+
+  .button {
+    padding: 1.5rem 2.5rem;
+  }
+}
+
+@media screen and (min-width: 765px) {
+  .home__menu {
+    gap: 1.5rem;
+  }
+
+  .home__item {
+    margin: 1rem 0;
+    font-size: var(--bigger-font-size);
+  }
+
+  .button {
+    padding: 2rem 3rem;
+  }
+}
+
+/* Para telas grandes */
+@media screen and (min-width: 1023px) {
+  .home__menu {
+    gap: 2rem;
+  }
+
+  .home__item {
+    margin: 1.5rem 0;
+    font-size: var(--bigger-font-size);
+  }
+
+  .button {
+    padding: 2.5rem 3.5rem;
+  }
+
+  .nav {
+    height: calc(var(--header-height) + 1.5rem);
+
+  }
+  
+  .nav__close,
+  .nav__toggle {
+    display: none;
+  }
+  
+  .nav__list {
+    grid-template-rows:auto;
+    grid-row: 5rem;
+  }
+  
+  .nav__menu {
+    width: initial;
+  }
+}
+
+
+@media screen and (min-width: 1152px) {
+  .home__menu {
+    gap: 2.5rem;
+  }
+
+  .home__item {
+    margin: 2rem 0;
+    font-size: var(--bigger-font-size);
+  }
+
+  .button {
+    padding: 3rem 4rem;
+  }
+}
+
+@media screen and (min-width: 1152px){
+  .container{
+    margin-inline: auto;
+  }
+
+  .home__container{
+    grid-template-columns: 455px 550px;
+    column-gap: 7rem;
+    padding-block: 2rem 3rem;
+  }
+  .home__content{
+    row-gap: 4.5rem;
+  }
+  .home__description{
+    margin-block: 1.5rem 2.5rem;
+  }
+  .home__social{
+    column-gap: 1.5rem;
+  }
+
+}
+
+/*=============== PROCESSOS ===============*/
+
+.search-box {
+  margin: 100px auto 20px;/* Adicionando margem superior */
+  display: flex;
+  align-items: center;
+  max-width: 750px;
+  margin-top: -40px;
+  padding-top: 8rem;
+}
+
+
+/* Ajustes para centralizar a caixa de pesquisa */
+.search-box input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 15px 0 0 15px;
+  font-size: 16px;
+}
+
+.search-box button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 0 15px 15px 0;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Estilo para as opções */
+.options {
+  margin: 50px auto;
+  text-align: center;/* Centralizar as opções */
+  margin-top: 80px;
+  
+}
+
+.options button {
+  padding: 15px 20px;
+  margin-right: 10px;
+  background-color: #1240be;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 8px;
+}
+
+.options button:last-child {
+  margin-right: 0;
+}
+
+/* Estilo para a lista de processos */
+.process-list {
+  margin: 20px auto;
+  max-width: 900px;/* Definir uma largura máxima para a lista */
+  font-size: 20px;
+}
+
+.process-list ul {
+  list-style: none;
+}
+
+.process-list li {
+  background-color: #f8f9fa;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  display: flex;/* Para alinhar itens horizontalmente */
+  align-items: center;/* Para alinhar verticalmente */
+}
+
+.process-list li input[type="checkbox"] {
+  margin-right: 10px;/* Espaço entre o checkbox e o texto */
+}
+
+.process-list li label {
+  flex: 1;/* Para ocupar todo o espaço disponível */
+}
+
+/* Estilo para o título da página */
+.page-title {
+  margin-top: 80px;/* Espaçamento superior */
+  font-size: 24px;/* Tamanho da fonte */
+  color: black;/* Cor do título */
+  margin-right: 10rem;
+  margin-left: -10px;
+}
+
+.ri-scales-3-fill {
+  margin-top: 99px;/* Espaçamento superior */
+  font-size: 35px;/* Tamanho da fonte */
+  color: black;/* Cor do título */
+  margin-right: 0, 5rem;
+  margin-left: 30px;
+}
+
+.ri-folder-add-line {
+  font-size: 30px;
+}
+
+.ri-folder-reduce-line {
+  font-size: 30px;
+}
